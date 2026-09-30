@@ -1,1000 +1,848 @@
 ```html
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="description"
-        content="ShopSphere - Your one-stop destination for fashion, electronics, footwear and more.">
+    <title>Nova - Modern Website</title>
 
-    <meta name="author" content="ShopSphere">
+    <style>
+        /* =========================
+           RESET
+        ========================= */
 
-    <title>ShopSphere | Online Shopping</title>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="css/style.css">
+        html {
+            scroll-behavior: smooth;
+        }
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet">
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #0b0b0f;
+            color: #ffffff;
+            line-height: 1.6;
+        }
 
-    <!-- Icons -->
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(11, 11, 15, 0.95);
+            border-bottom: 1px solid #222;
+        }
+
+        .navbar {
+            max-width: 1200px;
+            margin: auto;
+            height: 75px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 30px;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: 3px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: #aaa;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: white;
+        }
+
+        .nav-btn {
+            padding: 10px 20px;
+            border: 1px solid #444;
+            border-radius: 30px;
+            transition: 0.3s;
+        }
+
+        .nav-btn:hover {
+            background: white;
+            color: #111;
+        }
+
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            min-height: 90vh;
+            max-width: 1200px;
+            margin: auto;
+            padding: 80px 30px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 50px;
+        }
+
+        .hero-content {
+            max-width: 650px;
+        }
+
+        .tagline {
+            color: #aaa;
+            letter-spacing: 4px;
+            font-size: 13px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(50px, 7vw, 90px);
+            line-height: 1;
+            margin-bottom: 30px;
+        }
+
+        .hero h1 span {
+            color: #888;
+        }
+
+        .hero-text {
+            color: #aaa;
+            font-size: 18px;
+            max-width: 550px;
+            margin-bottom: 35px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 25px;
+            border-radius: 30px;
+            transition: 0.3s;
+        }
+
+        .primary-btn {
+            background: white;
+            color: #111;
+        }
+
+        .primary-btn:hover {
+            transform: translateY(-3px);
+        }
+
+        .secondary-btn {
+            border: 1px solid #444;
+            color: white;
+        }
+
+        .secondary-btn:hover {
+            background: #222;
+        }
+
+
+        /* HERO CARD */
+
+        .hero-card {
+            width: 330px;
+            height: 400px;
+
+            border: 1px solid #333;
+            border-radius: 25px;
+
+            padding: 35px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+
+            background: linear-gradient(145deg, #18181e, #0d0d11);
+
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+        }
+
+        .card-circle {
+            width: 150px;
+            height: 150px;
+
+            border-radius: 50%;
+
+            background: linear-gradient(135deg, #555, #111);
+
+            margin-bottom: auto;
+        }
+
+        .hero-card h2 {
+            font-size: 30px;
+        }
+
+        .hero-card p {
+            color: #888;
+        }
+
+
+        /* =========================
+           SECTIONS
+        ========================= */
+
+        .section {
+            max-width: 1200px;
+            margin: auto;
+            padding: 120px 30px;
+        }
+
+        .section-title {
+            margin-bottom: 60px;
+        }
+
+        .section-title p {
+            color: #777;
+            letter-spacing: 3px;
+            font-size: 13px;
+        }
+
+        .section-title h2 {
+            font-size: 45px;
+            margin-top: 10px;
+        }
+
+
+        /* =========================
+           ABOUT
+        ========================= */
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+        }
+
+        .about-content > div:first-child {
+            color: #aaa;
+            font-size: 18px;
+        }
+
+        .about-content p {
+            margin-bottom: 20px;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .stats div {
+            border-top: 1px solid #444;
+            padding-top: 20px;
+        }
+
+        .stats h3 {
+            font-size: 40px;
+        }
+
+        .stats p {
+            color: #777;
+        }
+
+
+        /* =========================
+           SERVICES
+        ========================= */
+
+        .services {
+            background: #101015;
+            max-width: none;
+            padding-left: max(30px, calc((100% - 1140px) / 2));
+            padding-right: max(30px, calc((100% - 1140px) / 2));
+        }
+
+        .service-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .service-card {
+            border: 1px solid #29292f;
+            padding: 35px;
+            min-height: 280px;
+
+            transition: 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            border-color: #666;
+        }
+
+        .icon {
+            font-size: 14px;
+            color: #777;
+            margin-bottom: 60px;
+        }
+
+        .service-card h3 {
+            font-size: 23px;
+            margin-bottom: 15px;
+        }
+
+        .service-card p {
+            color: #888;
+        }
+
+
+        /* =========================
+           PROJECTS
+        ========================= */
+
+        .project-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .project-card {
+            border: 1px solid #29292f;
+            overflow: hidden;
+        }
+
+        .project-image {
+            height: 250px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: linear-gradient(135deg, #303039, #101015);
+        }
+
+        .project-two {
+            background: linear-gradient(135deg, #45454d, #16161b);
+        }
+
+        .project-three {
+            background: linear-gradient(135deg, #222229, #55555c);
+        }
+
+        .project-image span {
+            border: 1px solid #aaa;
+            padding: 8px 15px;
+            font-size: 12px;
+            letter-spacing: 2px;
+        }
+
+        .project-info {
+            padding: 25px;
+        }
+
+        .project-info h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .project-info p {
+            color: #888;
+            margin-bottom: 20px;
+        }
+
+        .project-info a {
+            color: #fff;
+        }
+
+
+        /* =========================
+           CONTACT
+        ========================= */
+
+        .contact {
+            padding: 150px 30px;
+            text-align: center;
+            background: #17171c;
+        }
+
+        .contact-content {
+            max-width: 700px;
+            margin: auto;
+        }
+
+        .contact-content > p:first-child {
+            color: #777;
+            letter-spacing: 3px;
+            font-size: 13px;
+        }
+
+        .contact h2 {
+            font-size: clamp(40px, 6vw, 70px);
+            line-height: 1;
+            margin: 20px 0;
+        }
+
+        .contact-content p {
+            color: #888;
+            margin-bottom: 30px;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            padding: 60px 30px 30px;
+            background: #08080b;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: auto;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-content h2 {
+            letter-spacing: 3px;
+        }
+
+        .footer-content p {
+            color: #777;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .social-links a {
+            color: #777;
+        }
+
+        .social-links a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            color: #555;
+            margin-top: 50px;
+            font-size: 13px;
+        }
+
+
+        /* =========================
+           RESPONSIVE DESIGN
+        ========================= */
+
+        @media (max-width: 900px) {
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .hero-card {
+                width: 100%;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .service-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .project-container {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 25px;
+                text-align: center;
+            }
+        }
+
+
+        @media (max-width: 600px) {
+
+            .navbar {
+                padding: 0 20px;
+            }
+
+            .nav-btn {
+                display: none;
+            }
+
+            .hero {
+                padding: 70px 20px;
+            }
+
+            .hero h1 {
+                font-size: 55px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .hero-buttons .btn {
+                text-align: center;
+            }
+
+            .section {
+                padding: 80px 20px;
+            }
+
+            .section-title h2 {
+                font-size: 35px;
+            }
+
+            .service-container {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-    <!-- ================= HEADER ================= -->
-
-    <header class="header">
-
-        <div class="top-bar">
-            <p>🔥 Mega Sale is Live — Get up to 50% OFF!</p>
-            <p>Free Shipping on Orders Above ₹999</p>
-        </div>
-
+    <!-- Navigation -->
+    <header>
         <nav class="navbar">
 
-            <div class="logo">
-                <a href="index.html">
-                    <span>Shop</span>Sphere
-                </a>
-            </div>
+            <div class="logo">NOVA</div>
 
-            <div class="search-box">
-                <input type="text" placeholder="Search for products, brands and more...">
-                <button type="button">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </button>
-            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
 
-            <div class="nav-actions">
-
-                <a href="login.html" class="nav-item">
-                    <i class="fa-regular fa-user"></i>
-                    <span>Account</span>
-                </a>
-
-                <a href="#" class="nav-item">
-                    <i class="fa-regular fa-heart"></i>
-                    <span>Wishlist</span>
-                </a>
-
-                <a href="cart.html" class="nav-item cart-icon">
-                    <i class="fa-solid fa-cart-shopping"></i>
-                    <span>Cart</span>
-                    <small>0</small>
-                </a>
-
-            </div>
+            <a href="#contact" class="nav-btn">Get Started</a>
 
         </nav>
-
-        <div class="menu-bar">
-
-            <a href="index.html">Home</a>
-            <a href="products.html">Products</a>
-            <a href="offers.html">Offers</a>
-
-            <div class="dropdown">
-                <a href="#">Categories <i class="fa-solid fa-chevron-down"></i></a>
-
-                <div class="dropdown-menu">
-                    <a href="#">Fashion</a>
-                    <a href="#">Electronics</a>
-                    <a href="#">Footwear</a>
-                    <a href="#">Home & Living</a>
-                    <a href="#">Gaming</a>
-                    <a href="#">Mobiles</a>
-                </div>
-            </div>
-
-            <a href="about.html">About Us</a>
-            <a href="contact.html">Contact</a>
-
-        </div>
-
     </header>
 
 
-    <!-- ================= HERO SECTION ================= -->
+    <!-- Hero Section -->
+    <section class="hero" id="home">
 
-    <main>
+        <div class="hero-content">
 
-        <section class="hero">
-
-            <div class="hero-content">
-
-                <span class="hero-tag">
-                    NEW COLLECTION 2026
-                </span>
-
-                <h1>
-                    Discover.
-                    <br>
-                    Shop.
-                    <br>
-                    <span>Enjoy.</span>
-                </h1>
-
-                <p>
-                    Discover premium products at unbeatable prices.
-                    Everything you need, all in one place.
-                </p>
-
-                <div class="hero-buttons">
-                    <a href="products.html" class="btn primary-btn">
-                        Shop Now
-                        <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-
-                    <a href="offers.html" class="btn secondary-btn">
-                        Explore Offers
-                    </a>
-                </div>
-
-            </div>
-
-            <div class="hero-image">
-
-                <div class="hero-circle"></div>
-
-                <img src="images/banners/hero-product.png"
-                    alt="Featured ShopSphere Products">
-
-                <div class="discount-badge">
-                    <strong>50%</strong>
-                    <span>OFF</span>
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- ================= FEATURES ================= -->
-
-        <section class="features">
-
-            <div class="feature-card">
-
-                <i class="fa-solid fa-truck-fast"></i>
-
-                <div>
-                    <h3>Free Delivery</h3>
-                    <p>On orders above ₹999</p>
-                </div>
-
-            </div>
-
-            <div class="feature-card">
-
-                <i class="fa-solid fa-shield-halved"></i>
-
-                <div>
-                    <h3>Secure Payment</h3>
-                    <p>100% secure transactions</p>
-                </div>
-
-            </div>
-
-            <div class="feature-card">
-
-                <i class="fa-solid fa-rotate-left"></i>
-
-                <div>
-                    <h3>Easy Returns</h3>
-                    <p>7-day easy returns</p>
-                </div>
-
-            </div>
-
-            <div class="feature-card">
-
-                <i class="fa-solid fa-headset"></i>
-
-                <div>
-                    <h3>24/7 Support</h3>
-                    <p>We're here to help</p>
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- ================= CATEGORIES ================= -->
-
-        <section class="categories section">
-
-            <div class="section-header">
-
-                <div>
-                    <span class="section-label">EXPLORE</span>
-                    <h2>Shop by Category</h2>
-                </div>
-
-                <a href="products.html">
-                    View All
-                    <i class="fa-solid fa-arrow-right"></i>
-                </a>
-
-            </div>
-
-
-            <div class="category-grid">
-
-                <a href="#" class="category-card">
-
-                    <div class="category-image">
-                        <img src="images/categories/fashion.jpg"
-                            alt="Fashion">
-                    </div>
-
-                    <div class="category-info">
-                        <h3>Fashion</h3>
-                        <p>1200+ Products</p>
-                    </div>
-
-                </a>
-
-
-                <a href="#" class="category-card">
-
-                    <div class="category-image">
-                        <img src="images/categories/electronics.jpg"
-                            alt="Electronics">
-                    </div>
-
-                    <div class="category-info">
-                        <h3>Electronics</h3>
-                        <p>850+ Products</p>
-                    </div>
-
-                </a>
-
-
-                <a href="#" class="category-card">
-
-                    <div class="category-image">
-                        <img src="images/categories/shoes.jpg"
-                            alt="Footwear">
-                    </div>
-
-                    <div class="category-info">
-                        <h3>Footwear</h3>
-                        <p>650+ Products</p>
-                    </div>
-
-                </a>
-
-
-                <a href="#" class="category-card">
-
-                    <div class="category-image">
-                        <img src="images/categories/home.jpg"
-                            alt="Home and Living">
-                    </div>
-
-                    <div class="category-info">
-                        <h3>Home & Living</h3>
-                        <p>900+ Products</p>
-                    </div>
-
-                </a>
-
-
-                <a href="#" class="category-card">
-
-                    <div class="category-image">
-                        <img src="images/categories/gaming.jpg"
-                            alt="Gaming">
-                    </div>
-
-                    <div class="category-info">
-                        <h3>Gaming</h3>
-                        <p>450+ Products</p>
-                    </div>
-
-                </a>
-
-
-                <a href="#" class="category-card">
-
-                    <div class="category-image">
-                        <img src="images/categories/mobiles.jpg"
-                            alt="Mobiles">
-                    </div>
-
-                    <div class="category-info">
-                        <h3>Mobiles</h3>
-                        <p>700+ Products</p>
-                    </div>
-
-                </a>
-
-            </div>
-
-        </section>
-
-
-        <!-- ================= FEATURED PRODUCTS ================= -->
-
-        <section class="products section">
-
-            <div class="section-header">
-
-                <div>
-                    <span class="section-label">TRENDING NOW</span>
-                    <h2>Featured Products</h2>
-                </div>
-
-                <a href="products.html">
-                    View All
-                    <i class="fa-solid fa-arrow-right"></i>
-                </a>
-
-            </div>
-
-
-            <div class="product-grid">
-
-
-                <!-- PRODUCT 1 -->
-
-                <article class="product-card">
-
-                    <div class="product-image">
-
-                        <span class="product-badge">
-                            NEW
-                        </span>
-
-                        <button class="wishlist-btn">
-                            <i class="fa-regular fa-heart"></i>
-                        </button>
-
-                        <img src="images/products/smartphone.jpg"
-                            alt="Premium Smartphone">
-
-                        <div class="product-overlay">
-                            <a href="product-details.html">
-                                Quick View
-                            </a>
-                        </div>
-
-                    </div>
-
-                    <div class="product-info">
-
-                        <span class="product-category">
-                            Electronics
-                        </span>
-
-                        <h3>
-                            Premium Smartphone X1
-                        </h3>
-
-                        <div class="rating">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star-half-stroke"></i>
-
-                            <span>(128)</span>
-                        </div>
-
-                        <div class="price">
-                            <strong>₹29,999</strong>
-                            <del>₹34,999</del>
-                            <span>14% OFF</span>
-                        </div>
-
-                        <button class="add-cart">
-                            <i class="fa-solid fa-cart-plus"></i>
-                            Add to Cart
-                        </button>
-
-                    </div>
-
-                </article>
-
-
-                <!-- PRODUCT 2 -->
-
-                <article class="product-card">
-
-                    <div class="product-image">
-
-                        <span class="product-badge sale">
-                            SALE
-                        </span>
-
-                        <button class="wishlist-btn">
-                            <i class="fa-regular fa-heart"></i>
-                        </button>
-
-                        <img src="images/products/smartwatch.jpg"
-                            alt="Smart Watch">
-
-                        <div class="product-overlay">
-                            <a href="product-details.html">
-                                Quick View
-                            </a>
-                        </div>
-
-                    </div>
-
-                    <div class="product-info">
-
-                        <span class="product-category">
-                            Wearables
-                        </span>
-
-                        <h3>
-                            SmartWatch Pro 2
-                        </h3>
-
-                        <div class="rating">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-
-                            <span>(94)</span>
-                        </div>
-
-                        <div class="price">
-                            <strong>₹3,499</strong>
-                            <del>₹5,999</del>
-                            <span>42% OFF</span>
-                        </div>
-
-                        <button class="add-cart">
-                            <i class="fa-solid fa-cart-plus"></i>
-                            Add to Cart
-                        </button>
-
-                    </div>
-
-                </article>
-
-
-                <!-- PRODUCT 3 -->
-
-                <article class="product-card">
-
-                    <div class="product-image">
-
-                        <span class="product-badge">
-                            HOT
-                        </span>
-
-                        <button class="wishlist-btn">
-                            <i class="fa-regular fa-heart"></i>
-                        </button>
-
-                        <img src="images/products/shoes.jpg"
-                            alt="Running Shoes">
-
-                        <div class="product-overlay">
-                            <a href="product-details.html">
-                                Quick View
-                            </a>
-                        </div>
-
-                    </div>
-
-                    <div class="product-info">
-
-                        <span class="product-category">
-                            Footwear
-                        </span>
-
-                        <h3>
-                            UltraRun Sports Shoes
-                        </h3>
-
-                        <div class="rating">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-regular fa-star"></i>
-
-                            <span>(76)</span>
-                        </div>
-
-                        <div class="price">
-                            <strong>₹2,799</strong>
-                            <del>₹4,499</del>
-                            <span>38% OFF</span>
-                        </div>
-
-                        <button class="add-cart">
-                            <i class="fa-solid fa-cart-plus"></i>
-                            Add to Cart
-                        </button>
-
-                    </div>
-
-                </article>
-
-
-                <!-- PRODUCT 4 -->
-
-                <article class="product-card">
-
-                    <div class="product-image">
-
-                        <span class="product-badge sale">
-                            SALE
-                        </span>
-
-                        <button class="wishlist-btn">
-                            <i class="fa-regular fa-heart"></i>
-                        </button>
-
-                        <img src="images/products/headphones.jpg"
-                            alt="Wireless Headphones">
-
-                        <div class="product-overlay">
-                            <a href="product-details.html">
-                                Quick View
-                            </a>
-                        </div>
-
-                    </div>
-
-                    <div class="product-info">
-
-                        <span class="product-category">
-                            Audio
-                        </span>
-
-                        <h3>
-                            NoiseCancel Headphones
-                        </h3>
-
-                        <div class="rating">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star-half-stroke"></i>
-
-                            <span>(213)</span>
-                        </div>
-
-                        <div class="price">
-                            <strong>₹4,999</strong>
-                            <del>₹7,999</del>
-                            <span>37% OFF</span>
-                        </div>
-
-                        <button class="add-cart">
-                            <i class="fa-solid fa-cart-plus"></i>
-                            Add to Cart
-                        </button>
-
-                    </div>
-
-                </article>
-
-
-            </div>
-
-        </section>
-
-
-        <!-- ================= BIG OFFER BANNER ================= -->
-
-        <section class="offer-banner">
-
-            <div class="offer-content">
-
-                <span>LIMITED TIME OFFER</span>
-
-                <h2>
-                    Mega Sale
-                    <br>
-                    Up To <strong>50% OFF</strong>
-                </h2>
-
-                <p>
-                    Don't miss out on our biggest sale of the year.
-                    Grab your favorite products before they're gone.
-                </p>
-
-                <a href="offers.html" class="btn primary-btn">
-                    Shop the Sale
-                    <i class="fa-solid fa-arrow-right"></i>
-                </a>
-
-            </div>
-
-            <div class="offer-image">
-
-                <img src="images/banners/sale-banner.png"
-                    alt="Mega Sale">
-
-            </div>
-
-        </section>
-
-
-        <!-- ================= NEW ARRIVALS ================= -->
-
-        <section class="new-arrivals section">
-
-            <div class="section-header">
-
-                <div>
-                    <span class="section-label">JUST DROPPED</span>
-                    <h2>New Arrivals</h2>
-                </div>
-
-                <a href="products.html">
-                    Explore More
-                    <i class="fa-solid fa-arrow-right"></i>
-                </a>
-
-            </div>
-
-
-            <div class="arrival-grid">
-
-                <div class="arrival-card">
-
-                    <img src="images/products/laptop.jpg"
-                        alt="Laptop">
-
-                    <div class="arrival-content">
-
-                        <span>TECHNOLOGY</span>
-
-                        <h3>
-                            Power meets performance.
-                        </h3>
-
-                        <a href="product-details.html">
-                            Shop Now
-                            <i class="fa-solid fa-arrow-right"></i>
-                        </a>
-
-                    </div>
-
-                </div>
-
-
-                <div class="arrival-card">
-
-                    <img src="images/products/jacket.jpg"
-                        alt="Fashion Jacket">
-
-                    <div class="arrival-content">
-
-                        <span>FASHION</span>
-
-                        <h3>
-                            Upgrade your wardrobe.
-                        </h3>
-
-                        <a href="product-details.html">
-                            Shop Now
-                            <i class="fa-solid fa-arrow-right"></i>
-                        </a>
-
-                    </div>
-
-                </div>
-
-
-                <div class="arrival-card">
-
-                    <img src="images/products/gaming.jpg"
-                        alt="Gaming Setup">
-
-                    <div class="arrival-content">
-
-                        <span>GAMING</span>
-
-                        <h3>
-                            Level up your game.
-                        </h3>
-
-                        <a href="product-details.html">
-                            Shop Now
-                            <i class="fa-solid fa-arrow-right"></i>
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- ================= TESTIMONIALS ================= -->
-
-        <section class="testimonials section">
-
-            <div class="section-header centered">
-
-                <div>
-                    <span class="section-label">
-                        CUSTOMER LOVE
-                    </span>
-
-                    <h2>
-                        What Our Customers Say
-                    </h2>
-                </div>
-
-            </div>
-
-
-            <div class="testimonial-grid">
-
-
-                <div class="testimonial-card">
-
-                    <div class="quote-icon">
-                        <i class="fa-solid fa-quote-left"></i>
-                    </div>
-
-                    <p>
-                        "Amazing shopping experience! The products
-                        were exactly as shown and delivery was super
-                        fast. Definitely shopping here again."
-                    </p>
-
-                    <div class="customer">
-
-                        <img src="images/team/customer-1.jpg"
-                            alt="Customer">
-
-                        <div>
-                            <h4>Rahul Sharma</h4>
-                            <span>Verified Customer</span>
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <div class="testimonial-card">
-
-                    <div class="quote-icon">
-                        <i class="fa-solid fa-quote-left"></i>
-                    </div>
-
-                    <p>
-                        "The quality of the products exceeded my
-                        expectations. Customer support was also
-                        extremely helpful."
-                    </p>
-
-                    <div class="customer">
-
-                        <img src="images/team/customer-2.jpg"
-                            alt="Customer">
-
-                        <div>
-                            <h4>Ananya Patel</h4>
-                            <span>Verified Customer</span>
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <div class="testimonial-card">
-
-                    <div class="quote-icon">
-                        <i class="fa-solid fa-quote-left"></i>
-                    </div>
-
-                    <p>
-                        "Great prices, easy checkout and plenty of
-                        options. ShopSphere has become my favorite
-                        online store."
-                    </p>
-
-                    <div class="customer">
-
-                        <img src="images/team/customer-3.jpg"
-                            alt="Customer">
-
-                        <div>
-                            <h4>Arjun Mehta</h4>
-                            <span>Verified Customer</span>
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- ================= NEWSLETTER ================= -->
-
-        <section class="newsletter">
-
-            <div class="newsletter-content">
-
-                <span>STAY UPDATED</span>
-
-                <h2>
-                    Get the latest deals in your inbox.
-                </h2>
-
-                <p>
-                    Subscribe to our newsletter and get exclusive
-                    offers, new arrivals and special discounts.
-                </p>
-
-                <form>
-
-                    <input type="email"
-                        placeholder="Enter your email address"
-                        required>
-
-                    <button type="submit">
-                        Subscribe
-                        <i class="fa-solid fa-arrow-right"></i>
-                    </button>
-
-                </form>
-
-            </div>
-
-        </section>
-
-    </main>
-
-
-    <!-- ================= FOOTER ================= -->
-
-    <footer class="footer">
-
-        <div class="footer-container">
-
-
-            <div class="footer-about">
-
-                <div class="logo">
-                    <a href="index.html">
-                        <span>Shop</span>Sphere
-                    </a>
-                </div>
-
-                <p>
-                    Your one-stop destination for everything you
-                    love. Discover quality products, amazing deals
-                    and an effortless shopping experience.
-                </p>
-
-                <div class="social-icons">
-
-                    <a href="#">
-                        <i class="fa-brands fa-facebook-f"></i>
-                    </a>
-
-                    <a href="#">
-                        <i class="fa-brands fa-instagram"></i>
-                    </a>
-
-                    <a href="#">
-                        <i class="fa-brands fa-x-twitter"></i>
-                    </a>
-
-                    <a href="#">
-                        <i class="fa-brands fa-youtube"></i>
-                    </a>
-
-                </div>
-
-            </div>
-
-
-            <div class="footer-column">
-
-                <h3>Shop</h3>
-
-                <a href="products.html">All Products</a>
-                <a href="#">Fashion</a>
-                <a href="#">Electronics</a>
-                <a href="#">Footwear</a>
-                <a href="#">Gaming</a>
-                <a href="#">Home & Living</a>
-
-            </div>
-
-
-            <div class="footer-column">
-
-                <h3>Company</h3>
-
-                <a href="about.html">About Us</a>
-                <a href="#">Careers</a>
-                <a href="#">Our Stores</a>
-                <a href="#">Blog</a>
-                <a href="contact.html">Contact Us</a>
-
-            </div>
-
-
-            <div class="footer-column">
-
-                <h3>Help</h3>
-
-                <a href="#">FAQs</a>
-                <a href="#">Shipping Information</a>
-                <a href="#">Returns & Refunds</a>
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms & Conditions</a>
-
-            </div>
-
-
-            <div class="footer-column contact-column">
-
-                <h3>Contact</h3>
-
-                <p>
-                    <i class="fa-solid fa-location-dot"></i>
-                    Pune, Maharashtra, India
-                </p>
-
-                <p>
-                    <i class="fa-solid fa-phone"></i>
-                    +91 98765 43210
-                </p>
-
-                <p>
-                    <i class="fa-solid fa-envelope"></i>
-                    support@shopsphere.com
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <div class="footer-bottom">
-
-            <p>
-                © 2026 ShopSphere. All Rights Reserved.
+            <p class="tagline">
+                BUILD • CREATE • INNOVATE
             </p>
 
-            <div>
-                <span>Made with</span>
-                <i class="fa-solid fa-heart"></i>
-                <span>for shoppers.</span>
+            <h1>
+                Turn Your Ideas Into
+                <span>Reality.</span>
+            </h1>
+
+            <p class="hero-text">
+                We create modern, responsive and powerful digital
+                experiences that help businesses grow and stand out.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="#projects" class="btn primary-btn">
+                    Explore Projects
+                </a>
+
+                <a href="#about" class="btn secondary-btn">
+                    Learn More
+                </a>
             </div>
 
         </div>
+
+
+        <div class="hero-card">
+
+            <div class="card-circle"></div>
+
+            <h2>Creative</h2>
+
+            <p>
+                Designing experiences that people remember.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- About Section -->
+    <section class="section about" id="about">
+
+        <div class="section-title">
+            <p>WHO WE ARE</p>
+            <h2>We Build Digital Experiences</h2>
+        </div>
+
+        <div class="about-content">
+
+            <div>
+                <p>
+                    NOVA is a creative digital team focused on building
+                    websites and applications that combine beautiful
+                    design with powerful technology.
+                </p>
+
+                <p>
+                    From simple websites to complex digital platforms,
+                    we transform ideas into functional and engaging
+                    products.
+                </p>
+            </div>
+
+            <div class="stats">
+
+                <div>
+                    <h3>50+</h3>
+                    <p>Projects</p>
+                </div>
+
+                <div>
+                    <h3>30+</h3>
+                    <p>Clients</p>
+                </div>
+
+                <div>
+                    <h3>5+</h3>
+                    <p>Years</p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Services Section -->
+    <section class="section services" id="services">
+
+        <div class="section-title">
+            <p>WHAT WE DO</p>
+            <h2>Our Services</h2>
+        </div>
+
+        <div class="service-container">
+
+            <div class="service-card">
+                <div class="icon">01</div>
+
+                <h3>Web Design</h3>
+
+                <p>
+                    Modern and responsive websites designed for a great
+                    user experience on every device.
+                </p>
+            </div>
+
+
+            <div class="service-card">
+                <div class="icon">02</div>
+
+                <h3>Development</h3>
+
+                <p>
+                    Fast and reliable websites built using modern
+                    technologies and best practices.
+                </p>
+            </div>
+
+
+            <div class="service-card">
+                <div class="icon">03</div>
+
+                <h3>UI/UX Design</h3>
+
+                <p>
+                    Clean interfaces and thoughtful user experiences
+                    designed around your audience.
+                </p>
+            </div>
+
+
+            <div class="service-card">
+                <div class="icon">04</div>
+
+                <h3>Cloud Solutions</h3>
+
+                <p>
+                    Scalable cloud-based solutions designed to support
+                    modern applications and businesses.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Projects Section -->
+    <section class="section projects" id="projects">
+
+        <div class="section-title">
+            <p>OUR WORK</p>
+            <h2>Featured Projects</h2>
+        </div>
+
+        <div class="project-container">
+
+            <div class="project-card">
+
+                <div class="project-image project-one">
+                    <span>PROJECT 01</span>
+                </div>
+
+                <div class="project-info">
+                    <h3>Cloud Dashboard</h3>
+
+                    <p>
+                        A modern dashboard for monitoring cloud
+                        infrastructure.
+                    </p>
+
+                    <a href="#">View Project →</a>
+                </div>
+
+            </div>
+
+
+            <div class="project-card">
+
+                <div class="project-image project-two">
+                    <span>PROJECT 02</span>
+                </div>
+
+                <div class="project-info">
+                    <h3>E-Commerce Platform</h3>
+
+                    <p>
+                        A responsive online shopping experience.
+                    </p>
+
+                    <a href="#">View Project →</a>
+                </div>
+
+            </div>
+
+
+            <div class="project-card">
+
+                <div class="project-image project-three">
+                    <span>PROJECT 03</span>
+                </div>
+
+                <div class="project-info">
+                    <h3>Portfolio Website</h3>
+
+                    <p>
+                        A creative portfolio website for a designer.
+                    </p>
+
+                    <a href="#">View Project →</a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+
+        <div class="contact-content">
+
+            <p>HAVE A PROJECT?</p>
+
+            <h2>
+                Let's Build Something Amazing.
+            </h2>
+
+            <p>
+                Have an idea in mind? Let's turn it into something real.
+            </p>
+
+            <a href="mailto:hello@example.com"
+               class="btn primary-btn">
+                Contact Us
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- Footer -->
+    <footer>
+
+        <div class="footer-content">
+
+            <h2>NOVA</h2>
+
+            <p>
+                Creating digital experiences that matter.
+            </p>
+
+            <div class="social-links">
+                <a href="#">Instagram</a>
+                <a href="#">LinkedIn</a>
+                <a href="#">GitHub</a>
+            </div>
+
+        </div>
+
+        <p class="copyright">
+            © 2026 NOVA. All Rights Reserved.
+        </p>
 
     </footer>
 
-
 </body>
-
 </html>
 ```
